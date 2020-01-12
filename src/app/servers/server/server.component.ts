@@ -9,7 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./server.component.css']
 })
 export class ServerComponent implements OnInit {
-  server: {id: number, name: string, status: string};
+  server: { id: number, name: string, status: string };
 
   constructor(private serversService: ServersService, private route: ActivatedRoute, private router: Router) { }
 
@@ -25,7 +25,9 @@ export class ServerComponent implements OnInit {
   }
 
   onEdit() {
-    this.router.navigate(['edit'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
+    // Переход на роут http://localhost:4200/servers/2/edit с сохранением параметра ?allowEdit=0
+    // То есть: http://localhost:4200/servers/3?allowEdit=1#loading -> http://localhost:4200/servers/3/edit?allowEdit=1
+    this.router.navigate(['edit'], { relativeTo: this.route, queryParamsHandling: 'preserve' });
   }
 
 }
